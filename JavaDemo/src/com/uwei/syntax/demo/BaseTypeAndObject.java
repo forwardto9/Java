@@ -8,7 +8,7 @@ public class BaseTypeAndObject {
 		Integer intObject = new Integer(i);
 		System.out.print(intObject.toString());
 		
-		byte b = 127; // byte b = 'a';
+		byte b = 'a'; // byte b = 'a';
 		Byte bObject = new Byte(b);
 		System.out.print("\n" + bObject.toString());
 		
@@ -16,6 +16,10 @@ public class BaseTypeAndObject {
 		Character cObject = new Character(c);
 		System.out.print("\n" + cObject);
 		
+		boolean bool = false;
+		Boolean boolObejct = new Boolean(bool);
+		System.out.print("\n");
+		System.out.print(bool);
 		
 	}
 
