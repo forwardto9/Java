@@ -2,14 +2,28 @@ package com.uwei.syntax.demo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 import java.util.PriorityQueue;
+import java.util.Properties;
+import java.util.Set;
+import java.util.SortedMap;
 import java.util.Stack;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
+import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 
 
@@ -65,7 +79,15 @@ class D implements Comparable<D> {
 	}
 }
 
+
+
 public class CollectionMapType {
+
+	public enum EnumWeekday {
+		SUN, MON, TUE,TUS,FRI,SAT
+	}
+	
+	private static final Class<String> String = null;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -190,6 +212,109 @@ public class CollectionMapType {
 		System.out.println(vectorString);
 		vectorString.removeElement(7);
 		System.out.println(vectorString);
+		
+		
+		EnumMap<EnumWeekday, Integer> enumMap = new EnumMap<EnumWeekday, Integer>(EnumWeekday.class);
+		enumMap.put(EnumWeekday.FRI, 5);
+		enumMap.put(EnumWeekday.SUN, 0);
+		for (Entry<EnumWeekday, Integer> entry : enumMap.entrySet()) {
+			System.out.println(entry.getKey().name() + " : "  + entry.getValue());
+		}
+		
+		IdentityHashMap<String, String> identityHashMap = new IdentityHashMap<String, String>();
+		identityHashMap.put("MON", "monday");
+		identityHashMap.put("SAT", "saturday");
+		identityHashMap.put(new String("SAT"), "saturday 2"); // 要求相同的key必须在不同的存储区，才能完成相同的key的存储，否则会被替换
+		for (Entry<String, String> entry:identityHashMap.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		HashMap<String, Integer> rankHashMap = new HashMap<String, Integer>();
+		rankHashMap.put("uwei", 1);
+		rankHashMap.put("yuan", 2);
+		rankHashMap.put("demo", 3);
+		rankHashMap.put("demo", 4);
+		rankHashMap.put("test", 0);
+		rankHashMap.put("key", -1);
+		for (Entry<String, Integer> entry : rankHashMap.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		// 有序的HashMap
+		LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<String, Integer>();
+		linkedHashMap.put("uwei", 1);
+		linkedHashMap.put("yuan", 2);
+		linkedHashMap.put("demo", 3);
+		linkedHashMap.put("demo", 4);
+		linkedHashMap.put("test", 0);
+		linkedHashMap.put("key", -1);
+		for (Entry<String, Integer> entry : linkedHashMap.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		// 有序，线程安全
+		Hashtable<Integer, String> hashtable = new Hashtable<Integer, String>();
+		hashtable.put(1, "hello");
+		hashtable.put(3, "world");
+		hashtable.put(0, "demo");
+		hashtable.put(2, "test");
+		hashtable.put(5, "dummy");
+		
+		for (Entry<Integer, String> entry : hashtable.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		// 主要目的是操作properties文件
+		Properties properties = new Properties();
+		properties.put(3, 30);
+		properties.put("u", 21);
+//		properties.load(null); //主要是这个方法可以从文件中读取格式正确的数据
+		for (Entry<Object, Object> entry:properties.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		// 实现SortedMap,实现以Key排序map
+		TreeMap<Integer, String> treeMap = new TreeMap<Integer, String>();
+		treeMap.put(10, "A");
+		treeMap.put(0, "B");
+		treeMap.put(-1, "X");
+		treeMap.put(18, "U");
+		
+		for(Entry<Integer, String> entry:treeMap.entrySet()) {
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		
+		String stringTestMapA = new String("a");
+		String stringTestMapB = new String("b");
+		
+		// 弱引用
+		WeakHashMap<String, String> weakMap = new WeakHashMap<String, String>();
+		HashMap<String, String> map         =  new HashMap<String, String>();
+		map.put(stringTestMapA, "aaaaa");
+		map.put(stringTestMapB, "bbbb");
+		
+		weakMap.put(stringTestMapA, "aaaaa");
+		weakMap.put(stringTestMapB, "bbbb");
+		
+		map.remove(stringTestMapA);
+		stringTestMapA = null;
+		stringTestMapB = null;
+		System.gc();
+		
+		Iterator<?> iteratorMap = map.entrySet().iterator();
+		while (iteratorMap.hasNext()) {
+			java.util.Map.Entry<String, String> entry = (Entry<String, String>) iteratorMap.next();
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		Iterator<?> iteratorWeakMap = weakMap.entrySet().iterator();
+		while (iteratorWeakMap.hasNext()) {
+			java.util.Map.Entry<String, String> entry = (Entry) iteratorWeakMap.next();
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		// TODO: Concurrent Collection Type
 	}
 
 }
