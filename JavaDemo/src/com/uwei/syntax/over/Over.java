@@ -1,6 +1,4 @@
 package com.uwei.syntax.over;
-import com.uwei.syntax.over.Inner;
-
 
 class InstrumentX {
 	public void play(int x) {
