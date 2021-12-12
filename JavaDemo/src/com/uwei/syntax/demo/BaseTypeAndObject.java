@@ -5,19 +5,19 @@ public class BaseTypeAndObject {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int i = 1;
-		Integer intObject = new Integer(i);
+		Integer intObject = i;
 		System.out.print(intObject.toString());
 		
 		byte b = 'a'; // byte b = 'a';
-		Byte bObject = new Byte(b);
+		Byte bObject = b;
 		System.out.print("\n" + bObject.toString());
 		
 		char c = 'c';
-		Character cObject = new Character(c);
+		Character cObject = c;
 		System.out.print("\n" + cObject);
 		
 		boolean bool = false;
-		Boolean boolObejct = new Boolean(bool);
+		Boolean boolObejct = bool;
 		System.out.print("\n");
 		System.out.print(bool);
 		

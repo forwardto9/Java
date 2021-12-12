@@ -9,7 +9,7 @@ public class StringType {
 
 		String stringName = "hello world"; // 用于常量最好
 		System.out.print("first string is " + stringName + "\n");
-		stringName = stringName + " 1"; // 不要推荐使用 + 操作，性能问题
+		stringName = stringName + " 1"; // 不推荐使用 + 操作，性能问题
 		System.out.print("string + 1 =  " + stringName + "\n");
 		
 		StringBuilder stringBuilder = new StringBuilder("this string is from StringBuilder");
