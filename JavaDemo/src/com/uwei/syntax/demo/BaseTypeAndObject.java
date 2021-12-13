@@ -18,8 +18,11 @@ public class BaseTypeAndObject {
 		
 		boolean bool = false;
 		Boolean boolObejct = bool;
-		System.out.print("\n");
-		System.out.print(bool);
+		System.out.println(bool);
+
+		String s = "string";
+		Class cls = s.getClass();
+		System.out.println(cls);
 		
 	}
 
