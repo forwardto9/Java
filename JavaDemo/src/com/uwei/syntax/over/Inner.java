@@ -1,13 +1,5 @@
 package com.uwei.syntax.over;
 
-
-
-
-
-
-
-
-
 public class Inner {
 	private String name;
 	public Inner() {
