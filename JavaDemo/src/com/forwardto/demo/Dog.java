@@ -1,7 +1,6 @@
 package com.forwardto.demo;
-import com.uwei.syntax.demo.MyAnnotation;
 
-import java.lang.annotation.Inherited;
+import com.uwei.syntax.demo.MyAnnotation;
 
 public class Dog  implements AnimalBehavior {
 	
@@ -38,6 +37,7 @@ public class Dog  implements AnimalBehavior {
 	@MyAnnotation(type = 1, value = "function(x)")
 	public void test(Integer x, String n) {
 		// TODO 怎么执行value呢？
+		// 需要AOP织入运行时即可
 	}
 
 }

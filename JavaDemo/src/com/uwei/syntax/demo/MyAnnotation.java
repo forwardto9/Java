@@ -1,7 +1,6 @@
 package com.uwei.syntax.demo;
 
 import java.lang.annotation.*;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Target(ElementType.METHOD)
