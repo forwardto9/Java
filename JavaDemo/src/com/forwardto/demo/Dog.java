@@ -1,4 +1,7 @@
 package com.forwardto.demo;
+import com.uwei.syntax.demo.MyAnnotation;
+
+import java.lang.annotation.Inherited;
 
 public class Dog  implements AnimalBehavior {
 	
@@ -18,7 +21,7 @@ public class Dog  implements AnimalBehavior {
 			System.out.println("Show !");
 		}
 	};
-	
+
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -30,6 +33,11 @@ public class Dog  implements AnimalBehavior {
 		// TODO Auto-generated method stub
 		System.out.println("I'm a dog!");
 		System.out.println("My name is "  + this.name);
+	}
+
+	@MyAnnotation(type = 1, value = "function(x)")
+	public void test(Integer x, String n) {
+		// TODO 怎么执行value呢？
 	}
 
 }
